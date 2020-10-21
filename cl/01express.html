@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="01express.css">
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+
+</head>
+<body>
+用户名:<input type="text" id="user"><br>
+密码:<input type="text" id="pw"><br>
+<input type="button" value="get请求" id="get">
+<input type="button" value="post请求" id="post">
+<input type="button" value="jsonp请求" id="jsonp">
+</body>
+<script type="text/javascript">
+    // $("#get").click(function () {
+    //     $.ajax({
+    //         type:"get",
+    //         url:"http://127.0.0.1:8034/getData",
+    //         data:{
+    //             name:$("#user").val(),
+    //             passW:$("#pw").val()
+    //         },
+    //         success:function (data) {
+    //             console.log(data);
+    //         }
+    //     })
+    // })
+    // 或者
+    $("#get").on("click",function () {
+        $.ajax({
+            type:"get",
+            url:"http://127.0.0.1:8034/getData",
+            data:{
+                name:$("#user").val(),
+                passW:$("#pw").val()
+            },
+            success:function (data) {
+                console.log(data);
+            }
+        })
+    })
+    $("#post").click(function () {
+        $.ajax({
+            type: "post",
+            url:"http://127.0.0.1:8034/postData",
+            data:{
+                name:$("#user").val(),
+                passW:$("#pw").val()
+            },
+            success:function (data) {
+                console.log(data);
+            }
+        })
+    })
+// jsonp跨域请求
+    $("#jsonp").click(function () {
+        $.ajax({
+            type: "get",
+            url:"http://127.0.0.1:8034/jsonp",
+            data:{
+                name:$("#user").val(),
+                passW:$("#pw").val()
+            },
+            dataType:"jsonp",
+            success:function (data) {
+                console.log(data);
+            }
+        })
+    })
+</script>
+</html>
